@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轩的个人主页</title>
+  <style>
+    /* 全局样式 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* 粒子背景画布 */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      z-index: -1;
+    }
+
+    /* 居中内容容器 */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-top: 15px;
+      color: #eee;
+      animation: fadeUp 2.5s ease;
+    }
+
+    /* 卡片按钮 */
+    .btn {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #00c6ff;
+      border-radius: 30px;
+      color: #00c6ff;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00c6ff;
+      color: #fff;
+      box-shadow: 0 0 15px #00c6ff;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeUp {
+      from {transform: translateY(30px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    @keyframes glow {
+      from {text-shadow: 0 0 10px #00c6ff;}
+      to {text-shadow: 0 0 25px #0072ff;}
+    }
+  </style>
+</head>
+<body>
+  <!-- 粒子背景 -->
+  <div id="particles-js"></div>
+
+  <div class="container">
+    <h1>欢迎来到我的个人网站</h1>
+    <p>Hi，我是XXX，一名热爱编程与技术的开发者 🚀</p>
+    <a href="https://github.com/你的GitHub用户名" target="_blank" class="btn">访问我的 GitHub</a>
+  </div>
+
+  <!-- 引入粒子特效库 -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 100 },
+        color: { value: '#00c6ff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#00c6ff',
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 3
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'repulse' },
+          onclick: { enable: true, mode: 'push' }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>
