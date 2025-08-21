@@ -5,53 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>轩的个人主页</title>
   <style>
-    /* 全局样式 */
     body, html {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
-      overflow: hidden;
+      overflow-x: hidden;
+      background: #0f2027;
     }
 
-    /* 粒子背景画布 */
     #particles-js {
-      position: absolute;
+      position: fixed;
       width: 100%;
       height: 100%;
+      top: 0;
+      left: 0;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       z-index: -1;
     }
 
-    /* 居中内容容器 */
-    .container {
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: rgba(0,0,0,0.5);
+      padding: 15px 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #00c6ff;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 15px #00c6ff;
+    }
+
+    section {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
-      animation: fadeIn 2s ease-in-out;
+      padding: 80px 20px;
     }
 
-    h1 {
-      font-size: 3.5rem;
-      margin: 0;
+    h1, h2 {
+      margin: 10px 0;
       background: linear-gradient(90deg, #00c6ff, #0072ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glow 2s infinite alternate;
     }
 
     p {
-      font-size: 1.3rem;
-      margin-top: 15px;
+      font-size: 1.2rem;
+      max-width: 800px;
       color: #eee;
-      animation: fadeUp 2.5s ease;
+      line-height: 1.8;
     }
 
-    /* 卡片按钮 */
     .btn {
       margin-top: 25px;
       padding: 12px 25px;
@@ -70,34 +91,109 @@
       box-shadow: 0 0 15px #00c6ff;
     }
 
-    /* 动画效果 */
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      color: #aaa;
     }
 
-    @keyframes fadeUp {
-      from {transform: translateY(30px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
+    .game-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1000px;
+      margin-top: 30px;
     }
 
-    @keyframes glow {
-      from {text-shadow: 0 0 10px #00c6ff;}
-      to {text-shadow: 0 0 25px #0072ff;}
+    .game-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 15px;
+      width: 250px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .game-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,198,255,0.3);
+    }
+
+    .game-card h3 {
+      color: #00c6ff;
+      margin-bottom: 15px;
+    }
+
+    .game-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #00c6ff;
+      border-radius: 20px;
+      color: #00c6ff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .game-card a:hover {
+      background: #00c6ff;
+      color: #fff;
     }
   </style>
 </head>
 <body>
-  <!-- 粒子背景 -->
   <div id="particles-js"></div>
 
-  <div class="container">
-    <h1>欢迎来到我的个人网站</h1>
-    <p>Hi，我是王文轩，一名热爱编程与技术的开发者 🚀</p>
-    <a href="https://github.com/你的GitHub用户名" target="_blank" class="btn">访问我的 GitHub</a>
-  </div>
+  <nav>
+    <a href="#home">主页</a>
+    <a href="#about">关于我</a>
+    <a href="#games">小游戏</a>
+    <a href="#contact">联系</a>
+  </nav>
 
-  <!-- 引入粒子特效库 -->
+  <section id="home">
+    <h1>欢迎来到我的个人网站</h1>
+    <p>Hi，我是文轩，一名热爱编程与技术的开发者 🚀</p>
+    <a href="https://github.com/kingwenxuan" target="_blank" class="btn">访问我的 GitHub</a>
+  </section>
+
+  <section id="about">
+    <h2>关于我</h2>
+    <p>我喜欢开发有趣的应用和小游戏，希望能在这里与你分享。</p>
+  </section>
+
+  <section id="games">
+    <h2>小游戏</h2>
+    <div class="game-links">
+      <div class="game-card">
+        <h3>贪吃蛇</h3>
+        <a href="games/snake.html" target="_blank">开始游戏</a>
+      </div>
+      <div class="game-card">
+        <h3>2048</h3>
+        <a href="games/2048.html" target="_blank">开始游戏</a>
+      </div>
+      <div class="game-card">
+        <h3>打地鼠</h3>
+        <a href="games/whac-a-mole.html" target="_blank">开始游戏</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>联系我</h2>
+    <p>📧 邮箱: wwx1820430344@gmail.com</p>
+    <p>🌐 GitHub: <a href="https://github.com/kingwenxuan" target="_blank" style="color:#00c6ff;">点击访问</a></p>
+  </section>
+
+  <footer>
+    © 2025 我的个人主页 | Powered by GitHub Pages
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS('particles-js', {
