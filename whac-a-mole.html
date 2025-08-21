@@ -1,1 +1,94 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>打地鼠</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      justify-content: center;
+    }
+    #game {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 10px;
+    }
+    .hole {
+      width: 100px;
+      height: 100px;
+      background: #333;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+      cursor: pointer;
+    }
+    .mole {
+      color: yellow;
+    }
+    .back-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #0ff;
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .back-btn:hover {
+      background: #0cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>打地鼠 🐹</h1>
+  <h2>得分: <span id="score">0</span></h2>
+  <div id="game"></div>
+  <button class="back-btn" onclick="window.location.href='../index.html'">返回主页</button>
+  <script>
+    const game = document.getElementById("game");
+    const scoreDisplay = document.getElementById("score");
+    let score = 0;
+    let holes = [];
+
+    function createBoard() {
+      for (let i = 0; i < 9; i++) {
+        let hole = document.createElement("div");
+        hole.classList.add("hole");
+        hole.dataset.id = i;
+        game.appendChild(hole);
+        holes.push(hole);
+      }
+    }
+
+    function randomMole() {
+      holes.forEach(h => h.textContent = "");
+      let index = Math.floor(Math.random() * 9);
+      holes[index].textContent = "🐹";
+      holes[index].classList.add("mole");
+    }
+
+    game.addEventListener("click", e => {
+      if (e.target.textContent === "🐹") {
+        score++;
+        scoreDisplay.textContent = score;
+        e.target.textContent = "";
+      }
+    });
+
+    createBoard();
+    setInterval(randomMole, 800);
+  </script>
+</body>
+</html>
